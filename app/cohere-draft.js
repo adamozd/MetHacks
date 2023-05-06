@@ -1,13 +1,14 @@
-import cohere
+const cohere = require('cohere');
 
-# initialize the Cohere Client with an API Key
-co = cohere.Client('YOUR_API_KEY')
+// Initialize the Cohere Client with an API Key
+const co = new cohere.Client('YOUR_API_KEY');
 
-# generate a prediction for a prompt
-prediction = co.generate(
-            model='large',
-            prompt='co:here',
-            max_tokens=10)
+// Generate a prediction for a prompt
+const prediction = await co.generate({
+    model: 'large',
+    prompt: 'co:here',
+    maxTokens: 10
+});
 
-# print the predicted text
-print('prediction: {}'.format(prediction.generations[0].text))
+// Print the predicted text
+console.log(`Prediction: ${prediction.generations[0].text}`);
